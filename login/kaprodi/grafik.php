@@ -67,6 +67,94 @@ $tahun = $tahun_ex['0'];
             <br>
 
             <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel-body">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Grafik #1</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <body>  
+                                            <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
+                                            <div id="tampil_chart"></div>
+                                        </body>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                <div class="panel-body">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Grafik #2</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <body>
+                                            <div id="columnchart_material"></div>
+                                        </body>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="panel-body">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Grafik #2</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <body>  
+                                            <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
+                                            <div id="columnchart_values"></div>
+                                        </body>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Grafik #4</a>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <body>
+                                        <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
+                                        <div id="chart_proker"></div>
+                                    </body>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+
+            <div class="row">
                 <?php 
                 $tanggal = date('Y-m-d H:i:s', (time() + 18000));
                 $tahun = date('Y', strtotime($tanggal));
@@ -76,7 +164,6 @@ $tahun = $tahun_ex['0'];
                 ?>
 
                 <div class="col-lg-6">
-                    <div class="widget style1 white-bg">
                     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                     <!-- Mengembed Jquery -->
                     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -101,7 +188,7 @@ $tahun = $tahun_ex['0'];
                                     },
                                     bars: 'vertical',
                                     vAxis: {format: 'decimal'},
-                                    height: 250,
+                                    height: 300,
                                     width: 400,
                                     colors: ['#1b9e77', '#d95f02', '#7570b3']
                                 };
@@ -110,17 +197,9 @@ $tahun = $tahun_ex['0'];
                                 chart.draw(data, google.charts.Bar.convertOptions(options));
                             }
                         </script>  
-                </head>
-                <body>  
-                    <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
-                    <div id="tampil_chart"></div>
-                </body>
-                    </div>
                 </div>
              
                 <div class="col-lg-6">
-                    <div class="widget style1 white-bg">
-
                         <!-- Meng-embed Google API -->
                         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                         <!-- Mengembed Jquery -->
@@ -154,7 +233,7 @@ $tahun = $tahun_ex['0'];
                                     format: 'decimal'
                                 },
                                 height: 250,
-                                width: 500,
+                                width: 450,
                                 colors: ['#1b9e77', '#d95f02', '#7570b3']
                             };
                             // API Chart yang akan menampilkan ke dalam div id
@@ -163,12 +242,6 @@ $tahun = $tahun_ex['0'];
                         }
                         </script>
                         </head>
-
-                        <body>
-                            <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
-                            <div id="chart_proker"></div>
-                        </body>
-                    </div>
                 </div>
             </div>
 
@@ -2192,7 +2265,6 @@ $tahun = $tahun_ex['0'];
 
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="widget style1 white-bg">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                             google.charts.load('current', {'packages':['bar']});
@@ -2215,7 +2287,7 @@ $tahun = $tahun_ex['0'];
                                         format: 'decimal'
                                     },
                                     height: 300,
-                                    width: 500,
+                                    width: 450,
                                     colors: ['#1b9e77', '#d95f02', '#7570b3']
                             };
                             var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
@@ -2223,14 +2295,9 @@ $tahun = $tahun_ex['0'];
                             }
                             </script>
                         </head>
-                        <body>
-                            <div id="columnchart_material"></div>
-                        </body>
-                    </div>
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="widget style1 white-bg">
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <script type="text/javascript">
                         google.charts.load("current", {packages:['corechart']});
@@ -2251,7 +2318,7 @@ $tahun = $tahun_ex['0'];
 
                         var options = {
                             title: "Grafik Kuesioner tahun <?= $tahun ?>",
-                            width: 500,
+                            width: 450,
                             height: 250,
                             bar: {groupWidth: "70%"},
                             legend: { position: "none" },
@@ -2260,10 +2327,7 @@ $tahun = $tahun_ex['0'];
                         chart.draw(view, options);
                     }
                     </script>
-                    <div id="columnchart_values"></div>
-                    </div>
                 </div>
-
             </div>
 
             <br>

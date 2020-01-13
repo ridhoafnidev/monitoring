@@ -74,6 +74,7 @@ $query = $db->prepare("SELECT * FROM masa_jabatan where status='aktif'");
             ?>
             
         </div>
+        
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content">

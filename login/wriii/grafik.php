@@ -73,8 +73,92 @@ $tahun = $tahun_ex['0'];
                 $data = $query->fetchAll();
                 ?>
 
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Grafik</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="panel-body">
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h5 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Grafik Anggaran #1</a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                                <body>  
+                                                    <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
+                                                    <div id="tampil_chart"></div>
+                                                </body>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Grafik Program Kerja #2</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                            <body>
+                                                <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
+                                                <div id="chart_proker"></div>
+                                            </body>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Grafik Kuesioner #3</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                            <body>
+                                                <div id="columnchart_material"></div>
+                                            </body>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Grafik Kuesioner #4</a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse in">
+                                            <div class="panel-body">
+                                            <body>
+                                                <div id="columnchart_values"></div>
+                                            </body>
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 <div class="col-lg-6">
-                    <div class="widget style1 white-bg">
                     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                     <!-- Mengembed Jquery -->
                     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -95,12 +179,12 @@ $tahun = $tahun_ex['0'];
                                 var options = {
                                     chart: {
                                         title: 'Grafik Anggaran',
-                                        subtitle: 'Tahun: <?= $tahun; ?>',
+                                        subtitle: 'Tahun: <?= $tahun ?>',
                                     },
                                     bars: 'vertical',
                                     vAxis: {format: 'decimal'},
-                                    height: 250,
-                                    width: 400,
+                                    height: 300,
+                                    width: 950,
                                     colors: ['#1b9e77', '#d95f02', '#7570b3']
                                 };
                                 // API Chart yang akan menampilkan ke dalam div id
@@ -109,15 +193,9 @@ $tahun = $tahun_ex['0'];
                             }
                         </script>  
                 </head>
-                <body>  
-                    <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
-                    <div id="tampil_chart"></div>
-                </body>
-                    </div>
                 </div>
              
                 <div class="col-lg-6">
-                    <div class="widget style1 white-bg">
 
                         <!-- Meng-embed Google API -->
                         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -145,14 +223,14 @@ $tahun = $tahun_ex['0'];
                             var optionss = {
                                 chart: {
                                     title: 'Grafik Program Kerja',
-                                    subtitle: 'Tahun: <?= $tahun; ?>',
+                                    subtitle: 'Tahun: <?= $tahun ?>',
                                 },
                                 bars: 'vertical',
                                 vAxis: {
                                     format: 'decimal'
                                 },
-                                height: 250,
-                                width: 500,
+                                height: 350,
+                                width: 950,
                                 colors: ['#1b9e77', '#d95f02', '#7570b3']
                             };
                             // API Chart yang akan menampilkan ke dalam div id
@@ -161,13 +239,7 @@ $tahun = $tahun_ex['0'];
                         }
                         </script>
                         </head>
-
-                        <body>
-                            <!-- Menampilkan dalam bentuk chart dengan ukuran yang telah disesuaikan -->
-                            <div id="chart_proker"></div>
-                        </body>
                     </div>
-                </div>
             </div>
 
             <!-- Coding dataset grafik kuesioner -->
@@ -438,131 +510,131 @@ $tahun = $tahun_ex['0'];
 
             <!-- Himatif -->
             <?php               
-                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='himatif' " );
+                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='himatif' and tahun = '$tahun' " );
                 $query_per1_sb->execute();
                 $data_per1_sb = $query_per1_sb->fetchAll();
             
-                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='himatif' ");
+                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='himatif' and tahun = '$tahun' ");
                 $query_per1_b->execute();
                 $data_per1_b = $query_per1_b->fetchAll();
             
-                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='himatif' ");
+                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='himatif' and tahun = '$tahun' ");
                 $query_per1_c->execute();
                 $data_per1_c = $query_per1_c->fetchAll();
             
-                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='himatif' ");
+                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='himatif' and tahun = '$tahun' ");
                 $query_per1_k->execute();
                 $data_per1_k = $query_per1_k->fetchAll();
             
-                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='himatif' ");
+                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='himatif' and tahun = '$tahun' ");
                 $query_per2_sb->execute();
                 $data_per2_sb = $query_per2_sb->fetchAll();
             
-                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='himatif' ");
+                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='himatif' and tahun = '$tahun' ");
                 $query_per2_b->execute();
                 $data_per2_b = $query_per2_b->fetchAll();
             
-                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='himatif' ");
+                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='himatif' and tahun = '$tahun' ");
                 $query_per2_c->execute();
                 $data_per2_c = $query_per2_c->fetchAll();
             
-                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='himatif' ");
+                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='himatif' and tahun = '$tahun' ");
                 $query_per2_k->execute();
                 $data_per2_k = $query_per2_k->fetchAll();
             
-                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='himatif' ");
+                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='himatif' and tahun = '$tahun' ");
                 $query_per3_sb->execute();
                 $data_per3_sb = $query_per3_sb->fetchAll();
             
-                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='himatif' ");
+                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='himatif' and tahun = '$tahun' ");
                 $query_per3_b->execute();
                 $data_per3_b = $query_per3_b->fetchAll();
             
-                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='himatif' ");
+                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='himatif' and tahun = '$tahun' ");
                 $query_per3_c->execute();
                 $data_per3_c = $query_per3_c->fetchAll();
             
-                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='himatif' ");
+                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='himatif' and tahun = '$tahun' ");
                 $query_per3_k->execute();
                 $data_per3_k = $query_per3_k->fetchAll();
             
-                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='himatif' ");
+                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='himatif' and tahun = '$tahun' ");
                 $query_per4_sb->execute();
                 $data_per4_sb = $query_per4_sb->fetchAll();
             
-                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='himatif' ");
+                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='himatif' and tahun = '$tahun' ");
                 $query_per4_b->execute();
                 $data_per4_b = $query_per4_b->fetchAll();
             
-                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='himatif' ");
+                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='himatif' and tahun = '$tahun' ");
                 $query_per4_c->execute();
                 $data_per4_c = $query_per4_c->fetchAll();
             
-                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='himatif' ");
+                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='himatif' and tahun = '$tahun' ");
                 $query_per4_k->execute();
                 $data_per4_k = $query_per4_k->fetchAll();
             
-                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='himatif' ");
+                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='himatif' and tahun = '$tahun' ");
                 $query_per8_sb->execute();
                 $data_per8_sb = $query_per8_sb->fetchAll();
             
-                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='himatif' ");
+                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='himatif' and tahun = '$tahun' ");
                 $query_per8_b->execute();
                 $data_per8_b = $query_per8_b->fetchAll();
             
-                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='himatif' ");
+                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='himatif' and tahun = '$tahun' ");
                 $query_per8_c->execute();
                 $data_per8_c = $query_per8_c->fetchAll();
             
-                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='himatif' ");
+                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='himatif' and tahun = '$tahun' ");
                 $query_per8_k->execute();
                 $data_per8_k = $query_per8_k->fetchAll();
             
-                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='himatif' ");
+                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='himatif' and tahun = '$tahun' ");
                 $query_per5_sb->execute();
                 $data_per5_sb = $query_per5_sb->fetchAll();
             
-                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='himatif' ");
+                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='himatif' and tahun = '$tahun' ");
                 $query_per5_b->execute();
                 $data_per5_b = $query_per5_b->fetchAll();
             
-                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='himatif' ");
+                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='himatif' and tahun = '$tahun' ");
                 $query_per5_c->execute();
                 $data_per5_c = $query_per5_c->fetchAll();
             
-                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='himatif' ");
+                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='himatif' and tahun = '$tahun' ");
                 $query_per5_k->execute();
                 $data_per5_k = $query_per5_k->fetchAll();
             
-                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='himatif' ");
+                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='himatif' and tahun = '$tahun' ");
                 $query_per6_sb->execute();
                 $data_per6_sb = $query_per6_sb->fetchAll();
             
-                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='himatif' ");
+                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='himatif' and tahun = '$tahun' ");
                 $query_per6_b->execute();
                 $data_per6_b = $query_per6_b->fetchAll();
             
-                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='himatif' ");
+                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='himatif' and tahun = '$tahun' ");
                 $query_per6_c->execute();
                 $data_per6_c = $query_per6_c->fetchAll();
             
-                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='himatif' ");
+                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='himatif' and tahun = '$tahun' ");
                 $query_per6_k->execute();
                 $data_per6_k = $query_per6_k->fetchAll();
             
-                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='himatif' ");
+                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='himatif' and tahun = '$tahun' ");
                 $query_per7_sb->execute();
                 $data_per7_sb = $query_per7_sb->fetchAll();
             
-                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='himatif' ");
+                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='himatif' and tahun = '$tahun' ");
                 $query_per7_b->execute();
                 $data_per7_b = $query_per7_b->fetchAll();
             
-                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='himatif' ");
+                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='himatif' and tahun = '$tahun' ");
                 $query_per7_c->execute();
                 $data_per7_c = $query_per7_c->fetchAll();
             
-                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='himatif' ");
+                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='himatif' and tahun = '$tahun' ");
                 $query_per7_k->execute();
                 $data_per7_k = $query_per7_k->fetchAll();
                 
@@ -704,131 +776,131 @@ $tahun = $tahun_ex['0'];
 
             <!-- Himate -->
             <?php               
-                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='himate' " );
+                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='himate' and tahun = '$tahun' " );
                 $query_per1_sb->execute();
                 $data_per1_sb = $query_per1_sb->fetchAll();
             
-                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='himate' ");
+                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='himate' and tahun = '$tahun' ");
                 $query_per1_b->execute();
                 $data_per1_b = $query_per1_b->fetchAll();
             
-                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='himate' ");
+                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='himate' and tahun = '$tahun' ");
                 $query_per1_c->execute();
                 $data_per1_c = $query_per1_c->fetchAll();
             
-                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='himate' ");
+                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='himate' and tahun = '$tahun' ");
                 $query_per1_k->execute();
                 $data_per1_k = $query_per1_k->fetchAll();
             
-                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='himate' ");
+                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='himate' and tahun = '$tahun' ");
                 $query_per2_sb->execute();
                 $data_per2_sb = $query_per2_sb->fetchAll();
             
-                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='himate' ");
+                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='himate' and tahun = '$tahun' ");
                 $query_per2_b->execute();
                 $data_per2_b = $query_per2_b->fetchAll();
             
-                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='himate' ");
+                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='himate' and tahun = '$tahun' ");
                 $query_per2_c->execute();
                 $data_per2_c = $query_per2_c->fetchAll();
             
-                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='himate' ");
+                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='himate' and tahun = '$tahun' ");
                 $query_per2_k->execute();
                 $data_per2_k = $query_per2_k->fetchAll();
             
-                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='himate' ");
+                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='himate' and tahun = '$tahun' ");
                 $query_per3_sb->execute();
                 $data_per3_sb = $query_per3_sb->fetchAll();
             
-                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='himate' ");
+                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='himate' and tahun = '$tahun' ");
                 $query_per3_b->execute();
                 $data_per3_b = $query_per3_b->fetchAll();
             
-                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='himate' ");
+                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='himate' and tahun = '$tahun' ");
                 $query_per3_c->execute();
                 $data_per3_c = $query_per3_c->fetchAll();
             
-                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='himate' ");
+                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='himate' and tahun = '$tahun' ");
                 $query_per3_k->execute();
                 $data_per3_k = $query_per3_k->fetchAll();
             
-                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='himate' ");
+                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='himate' and tahun = '$tahun' ");
                 $query_per4_sb->execute();
                 $data_per4_sb = $query_per4_sb->fetchAll();
             
-                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='himate' ");
+                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='himate' and tahun = '$tahun' ");
                 $query_per4_b->execute();
                 $data_per4_b = $query_per4_b->fetchAll();
             
-                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='himate' ");
+                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='himate' and tahun = '$tahun' ");
                 $query_per4_c->execute();
                 $data_per4_c = $query_per4_c->fetchAll();
             
-                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='himate' ");
+                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='himate' and tahun = '$tahun' ");
                 $query_per4_k->execute();
                 $data_per4_k = $query_per4_k->fetchAll();
             
-                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='himate' ");
+                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='himate' and tahun = '$tahun' ");
                 $query_per8_sb->execute();
                 $data_per8_sb = $query_per8_sb->fetchAll();
             
-                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='himate' ");
+                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='himate' and tahun = '$tahun' ");
                 $query_per8_b->execute();
                 $data_per8_b = $query_per8_b->fetchAll();
             
-                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='himate' ");
+                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='himate' and tahun = '$tahun' ");
                 $query_per8_c->execute();
                 $data_per8_c = $query_per8_c->fetchAll();
             
-                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='himate' ");
+                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='himate' and tahun = '$tahun' ");
                 $query_per8_k->execute();
                 $data_per8_k = $query_per8_k->fetchAll();
             
-                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='himate' ");
+                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='himate' and tahun = '$tahun' ");
                 $query_per5_sb->execute();
                 $data_per5_sb = $query_per5_sb->fetchAll();
             
-                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='himate' ");
+                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='himate' and tahun = '$tahun' ");
                 $query_per5_b->execute();
                 $data_per5_b = $query_per5_b->fetchAll();
             
-                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='himate' ");
+                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='himate' and tahun = '$tahun' ");
                 $query_per5_c->execute();
                 $data_per5_c = $query_per5_c->fetchAll();
             
-                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='himate' ");
+                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='himate' and tahun = '$tahun' ");
                 $query_per5_k->execute();
                 $data_per5_k = $query_per5_k->fetchAll();
             
-                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='himate' ");
+                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='himate' and tahun = '$tahun' ");
                 $query_per6_sb->execute();
                 $data_per6_sb = $query_per6_sb->fetchAll();
             
-                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='himate' ");
+                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='himate' and tahun = '$tahun' ");
                 $query_per6_b->execute();
                 $data_per6_b = $query_per6_b->fetchAll();
             
-                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='himate' ");
+                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='himate' and tahun = '$tahun' ");
                 $query_per6_c->execute();
                 $data_per6_c = $query_per6_c->fetchAll();
             
-                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='himate' ");
+                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='himate' and tahun = '$tahun' ");
                 $query_per6_k->execute();
                 $data_per6_k = $query_per6_k->fetchAll();
             
-                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='himate' ");
+                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='himate' and tahun = '$tahun' ");
                 $query_per7_sb->execute();
                 $data_per7_sb = $query_per7_sb->fetchAll();
             
-                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='himate' ");
+                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='himate' and tahun = '$tahun' ");
                 $query_per7_b->execute();
                 $data_per7_b = $query_per7_b->fetchAll();
             
-                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='himate' ");
+                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='himate' and tahun = '$tahun' ");
                 $query_per7_c->execute();
                 $data_per7_c = $query_per7_c->fetchAll();
             
-                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='himate' ");
+                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='himate' and tahun = '$tahun' ");
                 $query_per7_k->execute();
                 $data_per7_k = $query_per7_k->fetchAll();
                 
@@ -970,131 +1042,131 @@ $tahun = $tahun_ex['0'];
 
             <!-- Hmjmt -->
             <?php               
-                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='hmjmt' " );
+                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='hmjmt' and tahun = '$tahun' " );
                 $query_per1_sb->execute();
                 $data_per1_sb = $query_per1_sb->fetchAll();
             
-                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='hmjmt' ");
+                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per1_b->execute();
                 $data_per1_b = $query_per1_b->fetchAll();
             
-                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='hmjmt' ");
+                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per1_c->execute();
                 $data_per1_c = $query_per1_c->fetchAll();
             
-                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='hmjmt' ");
+                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per1_k->execute();
                 $data_per1_k = $query_per1_k->fetchAll();
             
-                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='hmjmt' ");
+                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per2_sb->execute();
                 $data_per2_sb = $query_per2_sb->fetchAll();
             
-                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='hmjmt' ");
+                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per2_b->execute();
                 $data_per2_b = $query_per2_b->fetchAll();
             
-                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='hmjmt' ");
+                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per2_c->execute();
                 $data_per2_c = $query_per2_c->fetchAll();
             
-                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='hmjmt' ");
+                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per2_k->execute();
                 $data_per2_k = $query_per2_k->fetchAll();
             
-                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='hmjmt' ");
+                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per3_sb->execute();
                 $data_per3_sb = $query_per3_sb->fetchAll();
             
-                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='hmjmt' ");
+                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per3_b->execute();
                 $data_per3_b = $query_per3_b->fetchAll();
             
-                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='hmjmt' ");
+                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per3_c->execute();
                 $data_per3_c = $query_per3_c->fetchAll();
             
-                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='hmjmt' ");
+                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per3_k->execute();
                 $data_per3_k = $query_per3_k->fetchAll();
             
-                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='hmjmt' ");
+                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per4_sb->execute();
                 $data_per4_sb = $query_per4_sb->fetchAll();
             
-                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='hmjmt' ");
+                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per4_b->execute();
                 $data_per4_b = $query_per4_b->fetchAll();
             
-                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='hmjmt' ");
+                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per4_c->execute();
                 $data_per4_c = $query_per4_c->fetchAll();
             
-                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='hmjmt' ");
+                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per4_k->execute();
                 $data_per4_k = $query_per4_k->fetchAll();
             
-                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='hmjmt' ");
+                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per8_sb->execute();
                 $data_per8_sb = $query_per8_sb->fetchAll();
             
-                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='hmjmt' ");
+                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per8_b->execute();
                 $data_per8_b = $query_per8_b->fetchAll();
             
-                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='hmjmt' ");
+                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per8_c->execute();
                 $data_per8_c = $query_per8_c->fetchAll();
             
-                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='hmjmt' ");
+                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per8_k->execute();
                 $data_per8_k = $query_per8_k->fetchAll();
             
-                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='hmjmt' ");
+                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per5_sb->execute();
                 $data_per5_sb = $query_per5_sb->fetchAll();
             
-                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='hmjmt' ");
+                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per5_b->execute();
                 $data_per5_b = $query_per5_b->fetchAll();
             
-                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='hmjmt' ");
+                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='hmjmt' and tahun = '$tahun' ");
                 $query_per5_c->execute();
                 $data_per5_c = $query_per5_c->fetchAll();
             
-                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='hmjmt' ");
+                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per5_k->execute();
                 $data_per5_k = $query_per5_k->fetchAll();
             
-                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='hmjmt' ");
+                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per6_sb->execute();
                 $data_per6_sb = $query_per6_sb->fetchAll();
             
-                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='hmjmt' ");
+                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per6_b->execute();
                 $data_per6_b = $query_per6_b->fetchAll();
             
-                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='hmjmt' ");
+                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per6_c->execute();
                 $data_per6_c = $query_per6_c->fetchAll();
             
-                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='hmjmt' ");
+                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per6_k->execute();
                 $data_per6_k = $query_per6_k->fetchAll();
             
-                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='hmjmt' ");
+                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per7_sb->execute();
                 $data_per7_sb = $query_per7_sb->fetchAll();
             
-                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='hmjmt' ");
+                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per7_b->execute();
                 $data_per7_b = $query_per7_b->fetchAll();
             
-                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='hmjmt' ");
+                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per7_c->execute();
                 $data_per7_c = $query_per7_c->fetchAll();
             
-                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='hmjmt' ");
+                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='hmjmt' and tahun = '$tahun' ");
                 $query_per7_k->execute();
                 $data_per7_k = $query_per7_k->fetchAll();
                 
@@ -1236,131 +1308,131 @@ $tahun = $tahun_ex['0'];
 
             <!-- Hmjti -->
             <?php               
-                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='hmjti' " );
+                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='hmjti' and tahun = '$tahun' " );
                 $query_per1_sb->execute();
                 $data_per1_sb = $query_per1_sb->fetchAll();
             
-                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='hmjti' ");
+                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='hmjti' and tahun = '$tahun' ");
                 $query_per1_b->execute();
                 $data_per1_b = $query_per1_b->fetchAll();
             
-                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='hmjti' ");
+                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='hmjti' and tahun = '$tahun' ");
                 $query_per1_c->execute();
                 $data_per1_c = $query_per1_c->fetchAll();
             
-                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='hmjti' ");
+                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='hmjti' and tahun = '$tahun' ");
                 $query_per1_k->execute();
                 $data_per1_k = $query_per1_k->fetchAll();
             
-                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='hmjti' ");
+                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='hmjti' and tahun = '$tahun' ");
                 $query_per2_sb->execute();
                 $data_per2_sb = $query_per2_sb->fetchAll();
             
-                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='hmjti' ");
+                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='hmjti' and tahun = '$tahun' ");
                 $query_per2_b->execute();
                 $data_per2_b = $query_per2_b->fetchAll();
             
-                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='hmjti' ");
+                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='hmjti' and tahun = '$tahun' ");
                 $query_per2_c->execute();
                 $data_per2_c = $query_per2_c->fetchAll();
             
-                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='hmjti' ");
+                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='hmjti' and tahun = '$tahun' ");
                 $query_per2_k->execute();
                 $data_per2_k = $query_per2_k->fetchAll();
             
-                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='hmjti' ");
+                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='hmjti' and tahun = '$tahun' ");
                 $query_per3_sb->execute();
                 $data_per3_sb = $query_per3_sb->fetchAll();
             
-                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='hmjti' ");
+                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='hmjti' and tahun = '$tahun' ");
                 $query_per3_b->execute();
                 $data_per3_b = $query_per3_b->fetchAll();
             
-                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='hmjti' ");
+                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='hmjti' and tahun = '$tahun' ");
                 $query_per3_c->execute();
                 $data_per3_c = $query_per3_c->fetchAll();
             
-                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='hmjti' ");
+                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='hmjti' and tahun = '$tahun' ");
                 $query_per3_k->execute();
                 $data_per3_k = $query_per3_k->fetchAll();
             
-                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='hmjti' ");
+                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='hmjti' and tahun = '$tahun' ");
                 $query_per4_sb->execute();
                 $data_per4_sb = $query_per4_sb->fetchAll();
             
-                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='hmjti' ");
+                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='hmjti' and tahun = '$tahun' ");
                 $query_per4_b->execute();
                 $data_per4_b = $query_per4_b->fetchAll();
             
-                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='hmjti' ");
+                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='hmjti' and tahun = '$tahun' ");
                 $query_per4_c->execute();
                 $data_per4_c = $query_per4_c->fetchAll();
             
-                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='hmjti' ");
+                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='hmjti' and tahun = '$tahun' ");
                 $query_per4_k->execute();
                 $data_per4_k = $query_per4_k->fetchAll();
             
-                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='hmjti' ");
+                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='hmjti' and tahun = '$tahun' ");
                 $query_per8_sb->execute();
                 $data_per8_sb = $query_per8_sb->fetchAll();
             
-                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='hmjti' ");
+                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='hmjti' and tahun = '$tahun' ");
                 $query_per8_b->execute();
                 $data_per8_b = $query_per8_b->fetchAll();
             
-                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='hmjti' ");
+                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='hmjti' and tahun = '$tahun' ");
                 $query_per8_c->execute();
                 $data_per8_c = $query_per8_c->fetchAll();
             
-                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='hmjti' ");
+                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='hmjti' and tahun = '$tahun' ");
                 $query_per8_k->execute();
                 $data_per8_k = $query_per8_k->fetchAll();
             
-                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='hmjti' ");
+                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='hmjti' and tahun = '$tahun' ");
                 $query_per5_sb->execute();
                 $data_per5_sb = $query_per5_sb->fetchAll();
             
-                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='hmjti' ");
+                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='hmjti' and tahun = '$tahun' ");
                 $query_per5_b->execute();
                 $data_per5_b = $query_per5_b->fetchAll();
             
-                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='himate' ");
+                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='himate' and tahun = '$tahun' ");
                 $query_per5_c->execute();
                 $data_per5_c = $query_per5_c->fetchAll();
             
-                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='hmjti' ");
+                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='hmjti' and tahun = '$tahun' ");
                 $query_per5_k->execute();
                 $data_per5_k = $query_per5_k->fetchAll();
             
-                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='hmjti' ");
+                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='hmjti' and tahun = '$tahun' ");
                 $query_per6_sb->execute();
                 $data_per6_sb = $query_per6_sb->fetchAll();
             
-                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='hmjti' ");
+                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='hmjti' and tahun = '$tahun' ");
                 $query_per6_b->execute();
                 $data_per6_b = $query_per6_b->fetchAll();
             
-                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='hmjti' ");
+                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='hmjti' and tahun = '$tahun' ");
                 $query_per6_c->execute();
                 $data_per6_c = $query_per6_c->fetchAll();
             
-                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='hmjti' ");
+                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='hmjti' and tahun = '$tahun' ");
                 $query_per6_k->execute();
                 $data_per6_k = $query_per6_k->fetchAll();
             
-                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='hmjti' ");
+                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='hmjti' and tahun = '$tahun' ");
                 $query_per7_sb->execute();
                 $data_per7_sb = $query_per7_sb->fetchAll();
             
-                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='hmjti' ");
+                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='hmjti' and tahun = '$tahun' ");
                 $query_per7_b->execute();
                 $data_per7_b = $query_per7_b->fetchAll();
             
-                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='hmjti' ");
+                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='hmjti' and tahun = '$tahun' ");
                 $query_per7_c->execute();
                 $data_per7_c = $query_per7_c->fetchAll();
             
-                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='hmjti' ");
+                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='hmjti' and tahun = '$tahun' ");
                 $query_per7_k->execute();
                 $data_per7_k = $query_per7_k->fetchAll();
                 
@@ -1502,131 +1574,131 @@ $tahun = $tahun_ex['0'];
 
             <!-- Sema -->
             <?php               
-                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='sema' " );
+                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='sema' and tahun = '$tahun' " );
                 $query_per1_sb->execute();
                 $data_per1_sb = $query_per1_sb->fetchAll();
             
-                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='sema' ");
+                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='sema' and tahun = '$tahun' ");
                 $query_per1_b->execute();
                 $data_per1_b = $query_per1_b->fetchAll();
             
-                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='sema' ");
+                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='sema' and tahun = '$tahun' ");
                 $query_per1_c->execute();
                 $data_per1_c = $query_per1_c->fetchAll();
             
-                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='sema' ");
+                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='sema' and tahun = '$tahun' ");
                 $query_per1_k->execute();
                 $data_per1_k = $query_per1_k->fetchAll();
             
-                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='sema' ");
+                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='sema' and tahun = '$tahun' ");
                 $query_per2_sb->execute();
                 $data_per2_sb = $query_per2_sb->fetchAll();
             
-                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='sema' ");
+                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='sema' and tahun = '$tahun' ");
                 $query_per2_b->execute();
                 $data_per2_b = $query_per2_b->fetchAll();
             
-                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='sema' ");
+                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='sema' and tahun = '$tahun' ");
                 $query_per2_c->execute();
                 $data_per2_c = $query_per2_c->fetchAll();
             
-                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='sema' ");
+                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='sema' and tahun = '$tahun' ");
                 $query_per2_k->execute();
                 $data_per2_k = $query_per2_k->fetchAll();
             
-                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='sema' ");
+                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='sema' and tahun = '$tahun' ");
                 $query_per3_sb->execute();
                 $data_per3_sb = $query_per3_sb->fetchAll();
             
-                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='sema' ");
+                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='sema' and tahun = '$tahun' ");
                 $query_per3_b->execute();
                 $data_per3_b = $query_per3_b->fetchAll();
             
-                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='sema' ");
+                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='sema' and tahun = '$tahun' ");
                 $query_per3_c->execute();
                 $data_per3_c = $query_per3_c->fetchAll();
             
-                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='sema' ");
+                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='sema' and tahun = '$tahun' ");
                 $query_per3_k->execute();
                 $data_per3_k = $query_per3_k->fetchAll();
             
-                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='sema' ");
+                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='sema' and tahun = '$tahun' ");
                 $query_per4_sb->execute();
                 $data_per4_sb = $query_per4_sb->fetchAll();
             
-                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='sema' ");
+                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='sema' and tahun = '$tahun' ");
                 $query_per4_b->execute();
                 $data_per4_b = $query_per4_b->fetchAll();
             
-                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='sema' ");
+                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='sema' and tahun = '$tahun' ");
                 $query_per4_c->execute();
                 $data_per4_c = $query_per4_c->fetchAll();
             
-                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='sema' ");
+                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='sema' and tahun = '$tahun' ");
                 $query_per4_k->execute();
                 $data_per4_k = $query_per4_k->fetchAll();
             
-                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='sema' ");
+                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='sema' and tahun = '$tahun' ");
                 $query_per8_sb->execute();
                 $data_per8_sb = $query_per8_sb->fetchAll();
             
-                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='sema' ");
+                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='sema' and tahun = '$tahun' ");
                 $query_per8_b->execute();
                 $data_per8_b = $query_per8_b->fetchAll();
             
-                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='sema' ");
+                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='sema' and tahun = '$tahun' ");
                 $query_per8_c->execute();
                 $data_per8_c = $query_per8_c->fetchAll();
             
-                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='sema' ");
+                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='sema' and tahun = '$tahun' ");
                 $query_per8_k->execute();
                 $data_per8_k = $query_per8_k->fetchAll();
             
-                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='sema' ");
+                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='sema' and tahun = '$tahun' ");
                 $query_per5_sb->execute();
                 $data_per5_sb = $query_per5_sb->fetchAll();
             
-                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='sema' ");
+                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='sema' and tahun = '$tahun' ");
                 $query_per5_b->execute();
                 $data_per5_b = $query_per5_b->fetchAll();
             
-                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='sema' ");
+                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='sema' and tahun = '$tahun' ");
                 $query_per5_c->execute();
                 $data_per5_c = $query_per5_c->fetchAll();
             
-                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='sema' ");
+                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='sema' and tahun = '$tahun' ");
                 $query_per5_k->execute();
                 $data_per5_k = $query_per5_k->fetchAll();
             
-                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='sema' ");
+                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='sema' and tahun = '$tahun' ");
                 $query_per6_sb->execute();
                 $data_per6_sb = $query_per6_sb->fetchAll();
             
-                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='sema' ");
+                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='sema' and tahun = '$tahun' ");
                 $query_per6_b->execute();
                 $data_per6_b = $query_per6_b->fetchAll();
             
-                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='sema' ");
+                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='sema' and tahun = '$tahun' ");
                 $query_per6_c->execute();
                 $data_per6_c = $query_per6_c->fetchAll();
             
-                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='sema' ");
+                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='sema' and tahun = '$tahun' ");
                 $query_per6_k->execute();
                 $data_per6_k = $query_per6_k->fetchAll();
             
-                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='sema' ");
+                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='sema' and tahun = '$tahun' ");
                 $query_per7_sb->execute();
                 $data_per7_sb = $query_per7_sb->fetchAll();
             
-                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='sema' ");
+                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='sema' and tahun = '$tahun' ");
                 $query_per7_b->execute();
                 $data_per7_b = $query_per7_b->fetchAll();
             
-                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='sema' ");
+                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='sema' and tahun = '$tahun' ");
                 $query_per7_c->execute();
                 $data_per7_c = $query_per7_c->fetchAll();
             
-                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='sema' ");
+                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='sema' and tahun = '$tahun' ");
                 $query_per7_k->execute();
                 $data_per7_k = $query_per7_k->fetchAll();
                 
@@ -1768,131 +1840,131 @@ $tahun = $tahun_ex['0'];
 
              <!-- Dema -->
              <?php               
-                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='dema' " );
+                $query_per1_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and SB=5 and user='dema' and tahun = '$tahun' " );
                 $query_per1_sb->execute();
                 $data_per1_sb = $query_per1_sb->fetchAll();
             
-                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='dema' ");
+                $query_per1_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and B=4 and user='dema' and tahun = '$tahun' ");
                 $query_per1_b->execute();
                 $data_per1_b = $query_per1_b->fetchAll();
             
-                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='dema' ");
+                $query_per1_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and C=3 and user='dema' and tahun = '$tahun' ");
                 $query_per1_c->execute();
                 $data_per1_c = $query_per1_c->fetchAll();
             
-                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='dema' ");
+                $query_per1_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=5 and K=2 and user='dema' and tahun = '$tahun' ");
                 $query_per1_k->execute();
                 $data_per1_k = $query_per1_k->fetchAll();
             
-                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='dema' ");
+                $query_per2_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and SB=5 and user='dema' and tahun = '$tahun' ");
                 $query_per2_sb->execute();
                 $data_per2_sb = $query_per2_sb->fetchAll();
             
-                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='dema' ");
+                $query_per2_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and B=4 and user='dema' and tahun = '$tahun' ");
                 $query_per2_b->execute();
                 $data_per2_b = $query_per2_b->fetchAll();
             
-                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='dema' ");
+                $query_per2_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and C=3 and user='dema' and tahun = '$tahun' ");
                 $query_per2_c->execute();
                 $data_per2_c = $query_per2_c->fetchAll();
             
-                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='dema' ");
+                $query_per2_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=6 and K=2 and user='dema' and tahun = '$tahun' ");
                 $query_per2_k->execute();
                 $data_per2_k = $query_per2_k->fetchAll();
             
-                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='dema' ");
+                $query_per3_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and SB=5 and user='dema' and tahun = '$tahun' ");
                 $query_per3_sb->execute();
                 $data_per3_sb = $query_per3_sb->fetchAll();
             
-                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='dema' ");
+                $query_per3_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and B=4 and user='dema' and tahun = '$tahun' ");
                 $query_per3_b->execute();
                 $data_per3_b = $query_per3_b->fetchAll();
             
-                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='dema' ");
+                $query_per3_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and C=3 and user='dema' and tahun = '$tahun' ");
                 $query_per3_c->execute();
                 $data_per3_c = $query_per3_c->fetchAll();
             
-                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='dema' ");
+                $query_per3_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=7 and K=2 and user='dema' and tahun = '$tahun' ");
                 $query_per3_k->execute();
                 $data_per3_k = $query_per3_k->fetchAll();
             
-                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='dema' ");
+                $query_per4_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and SB=5 and user='dema' and tahun = '$tahun' ");
                 $query_per4_sb->execute();
                 $data_per4_sb = $query_per4_sb->fetchAll();
             
-                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='dema' ");
+                $query_per4_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and B=4 and user='dema' and tahun = '$tahun' ");
                 $query_per4_b->execute();
                 $data_per4_b = $query_per4_b->fetchAll();
             
-                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='dema' ");
+                $query_per4_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and C=3 and user='dema' and tahun = '$tahun' ");
                 $query_per4_c->execute();
                 $data_per4_c = $query_per4_c->fetchAll();
             
-                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='dema' ");
+                $query_per4_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=8 and K=2 and user='dema' and tahun = '$tahun' ");
                 $query_per4_k->execute();
                 $data_per4_k = $query_per4_k->fetchAll();
             
-                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='dema' ");
+                $query_per8_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and SB=5 and user='dema' and tahun = '$tahun' ");
                 $query_per8_sb->execute();
                 $data_per8_sb = $query_per8_sb->fetchAll();
             
-                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='dema' ");
+                $query_per8_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and B=4 and user='dema' and tahun = '$tahun' ");
                 $query_per8_b->execute();
                 $data_per8_b = $query_per8_b->fetchAll();
             
-                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='dema' ");
+                $query_per8_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and C=3 and user='dema' and tahun = '$tahun' ");
                 $query_per8_c->execute();
                 $data_per8_c = $query_per8_c->fetchAll();
             
-                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='dema' ");
+                $query_per8_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=9 and K=2 and user='dema' and tahun = '$tahun' ");
                 $query_per8_k->execute();
                 $data_per8_k = $query_per8_k->fetchAll();
             
-                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='dema' ");
+                $query_per5_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and SB=5 and user='dema' and tahun = '$tahun' ");
                 $query_per5_sb->execute();
                 $data_per5_sb = $query_per5_sb->fetchAll();
             
-                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='dema' ");
+                $query_per5_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and B=4 and user='dema' and tahun = '$tahun' ");
                 $query_per5_b->execute();
                 $data_per5_b = $query_per5_b->fetchAll();
             
-                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='dema' ");
+                $query_per5_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and C=3 and user='dema' and tahun = '$tahun' ");
                 $query_per5_c->execute();
                 $data_per5_c = $query_per5_c->fetchAll();
             
-                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='dema' ");
+                $query_per5_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=10 and K=2  and user='dema' and tahun = '$tahun' ");
                 $query_per5_k->execute();
                 $data_per5_k = $query_per5_k->fetchAll();
             
-                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='dema' ");
+                $query_per6_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and SB=5  and user='dema' and tahun = '$tahun' ");
                 $query_per6_sb->execute();
                 $data_per6_sb = $query_per6_sb->fetchAll();
             
-                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='dema' ");
+                $query_per6_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and B=4  and user='dema' and tahun = '$tahun' ");
                 $query_per6_b->execute();
                 $data_per6_b = $query_per6_b->fetchAll();
             
-                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='dema' ");
+                $query_per6_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and C=3  and user='dema' and tahun = '$tahun' ");
                 $query_per6_c->execute();
                 $data_per6_c = $query_per6_c->fetchAll();
             
-                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='dema' ");
+                $query_per6_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=11 and K=2  and user='dema' and tahun = '$tahun' ");
                 $query_per6_k->execute();
                 $data_per6_k = $query_per6_k->fetchAll();
             
-                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='dema' ");
+                $query_per7_sb = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and SB=5  and user='dema' and tahun = '$tahun' ");
                 $query_per7_sb->execute();
                 $data_per7_sb = $query_per7_sb->fetchAll();
             
-                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='dema' ");
+                $query_per7_b = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and B=4  and user='dema' and tahun = '$tahun' ");
                 $query_per7_b->execute();
                 $data_per7_b = $query_per7_b->fetchAll();
             
-                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='dema' ");
+                $query_per7_c = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and C=3  and user='dema' and tahun = '$tahun' ");
                 $query_per7_c->execute();
                 $data_per7_c = $query_per7_c->fetchAll();
             
-                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='sema' ");
+                $query_per7_k = $db->prepare("SELECT * FROM kuesioner_detail where kuesioner_id=12 and K=2  and user='sema' and tahun = '$tahun' ");
                 $query_per7_k->execute();
                 $data_per7_k = $query_per7_k->fetchAll();
                 
@@ -2170,7 +2242,6 @@ $tahun = $tahun_ex['0'];
 
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="widget style1 white-bg">
                         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                         <script type="text/javascript">
                             google.charts.load('current', {'packages':['bar']});
@@ -2192,14 +2263,14 @@ $tahun = $tahun_ex['0'];
                                 var optionss = {
                                 chart: {
                                     title: 'Grafik Kuesioner Pembelajaran & Perkembangan',
-                                    subtitle: 'Tahun : <?= $tahun; ?>',
+                                    subtitle: 'Tahun : <?= $tahun ?>',
                                 },
                                 bars: 'vertical',
                                     vAxis: {
                                         format: 'decimal'
                                     },
-                                    height: 300,
-                                    width: 500,
+                                    height: 350,
+                                    width: 950,
                                     colors: ['#1b9e77', '#d95f02', '#7570b3']
                             };
                             var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
@@ -2207,14 +2278,10 @@ $tahun = $tahun_ex['0'];
                             }
                             </script>
                         </head>
-                        <body>
-                            <div id="columnchart_material"></div>
-                        </body>
-                    </div>
+                        
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="widget style1 white-bg">
                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                     <script type="text/javascript">
                         google.charts.load("current", {packages:['corechart']});
@@ -2240,9 +2307,9 @@ $tahun = $tahun_ex['0'];
                                         2]);
 
                         var options = {
-                            title: "Grafik Kuesioner Pelanggan tahun <?= $tahun ?>",
-                            width: 500,
-                            height: 250,
+                            title: "Grafik Kuesioner Pelanggan tahun     <?= $tahun ?>",
+                            width: 900,
+                            height: 300,
                             bar: {groupWidth: "70%"},
                             legend: { position: "none" },
                         };
@@ -2250,11 +2317,9 @@ $tahun = $tahun_ex['0'];
                         chart.draw(view, options);
                     }
                     </script>
-                    <div id="columnchart_values"></div>
-                    </div>
+                    
                 </div>
 
-            </div>
 
             <br>
             <br>
